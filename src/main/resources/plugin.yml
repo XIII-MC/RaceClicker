@@ -2,3 +2,11 @@ name: RaceClicker
 version: '${project.version}'
 main: com.xiii.raceclicker.RaceClicker
 api-version: 1.17
+authors:
+  - DukeinPro (Vagdedes2)
+  - XIII___
+commands:
+  setRaceSpeed:
+      description: Set the speed of urself
+      permission: raceclicker.setspeed
+

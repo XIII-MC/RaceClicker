@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import java.io.*;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.logging.Level;
 
 public class FileUtils {
 
@@ -95,7 +96,7 @@ public class FileUtils {
         File configFolder = new File(RaceClicker.INSTANCE.getDataFolder() + "//players//");
 
         if (configFolder.listFiles() == null || Objects.requireNonNull(configFolder.listFiles()).length < 1) {
-            System.out.println("§eWARN: No PlayerData found");
+            RaceClicker.INSTANCE.log(Level.WARNING, "§eNo PlayerData found");
         } else {
             for (final File file : Objects.requireNonNull(configFolder.listFiles())) {
                 try {
@@ -108,7 +109,7 @@ public class FileUtils {
                     i.printStackTrace();
                     return;
                 } catch (ClassNotFoundException c) {
-                    System.out.println("§cERROR: PlayerData class not found");
+                    RaceClicker.INSTANCE.log(Level.SEVERE, "§cPlayerData class not found");
                     c.printStackTrace();
                     return;
                 }

@@ -1,0 +1,4 @@
+name: RaceClicker
+version: '${project.version}'
+main: com.xiii.raceclicker.RaceClicker
+api-version: 1.17

@@ -3,6 +3,7 @@ package com.xiii.raceclicker.listener;
 import com.xiii.raceclicker.RaceClicker;
 import com.xiii.raceclicker.data.Data;
 import com.xiii.raceclicker.data.PlayerData;
+import com.xiii.raceclicker.utils.SoundUtils;
 import io.github.retrooper.packetevents.event.PacketListenerAbstract;
 import io.github.retrooper.packetevents.event.PacketListenerPriority;
 import io.github.retrooper.packetevents.event.impl.PacketPlayReceiveEvent;
@@ -27,6 +28,7 @@ public class PacketListener extends PacketListenerAbstract {
                 case PacketType.Play.Client.ARM_ANIMATION:
                     if(RaceClicker.INSTANCE.serverData.isClickingPhase) {
                       pd.level++;
+                        SoundUtils.playSound(p, 11);
                     }
                     break;
             }

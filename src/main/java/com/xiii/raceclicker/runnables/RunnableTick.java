@@ -4,6 +4,7 @@ import com.xiii.raceclicker.RaceClicker;
 import com.xiii.raceclicker.data.Data;
 import com.xiii.raceclicker.data.PlayerData;
 import com.xiii.raceclicker.data.TempServerData;
+import com.xiii.raceclicker.utils.SoundUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.attribute.Attribute;
@@ -47,16 +48,17 @@ public class RunnableTick extends BukkitRunnable {
 
         //bar.setTitle((data.isClickingPhase ? ChatColor.LIGHT_PURPLE : data.isRacePhase ? ChatColor.GREEN : data.isWaitingAfterClickPhase ? ChatColor.RED : ChatColor.YELLOW) + "Current Phase: " + (data.isClickingPhase ? "Clicking" : data.isRacePhase ? "Racing" : data.isWaitingAfterClickPhase ? "Starting soon" : "Starting new Race") + " Time Left: " + (minutes > 0 ? minutes + "m " + Math.round(seconds) + "s" : Math.round(seconds) + "s"));
         if(data.isClickingPhase) {
-            bar.setTitle(ChatColor.LIGHT_PURPLE + "Current Phase: " + (minutes > 0 ? minutes + "m " + Math.round(seconds) + "s" : Math.round(seconds) + "s") + " Left to Click");
+            bar.setTitle(ChatColor.LIGHT_PURPLE + (minutes > 0 ? minutes + "m " + Math.round(seconds) + "s" : Math.round(seconds) + "s") + " left to click!");
         }
         if(data.isRacePhase) {
-            bar.setTitle(ChatColor.GREEN + "Current Phase: " + (minutes > 0 ? minutes + "m " + Math.round(seconds) + "s" : Math.round(seconds) + "s") + " Left to Race");
+            bar.setTitle(ChatColor.GREEN + (minutes > 0 ? minutes + "m " + Math.round(seconds) + "s" : Math.round(seconds) + "s") + " left to race");
         }
         if(data.isWaitingAfterClickPhase) {
-            bar.setTitle(ChatColor.RED + "Current Phase: " + (minutes > 0 ? minutes + "m " + Math.round(seconds) + "s" : Math.round(seconds) + "s") + " Left to wait");
+            bar.setTitle(ChatColor.RED + "Starting in " + (minutes > 0 ? minutes + "m " + Math.round(seconds) + "s" : Math.round(seconds) + "s"));
         }
         if(data.isWaitingBeforeClickPhase) {
-            bar.setTitle(ChatColor.YELLOW + "Current Phase: " + "Starting new Race in " + (minutes > 0 ? minutes + "m " + Math.round(seconds) + "s" : Math.round(seconds) + "s"));
+
+            bar.setTitle(ChatColor.YELLOW + "New race in " + (minutes > 0 ? minutes + "m " + Math.round(seconds) + "s" : Math.round(seconds) + "s"));
         }
         double progress = data.timeLeft / (double)(data.isClickingPhase ? 20*20 : data.isRacePhase ? 2*60*20 : data.isWaitingAfterClickPhase ? 5*20 : 60*20);
 
@@ -76,7 +78,7 @@ public class RunnableTick extends BukkitRunnable {
                 } else {
                     pd.speed = pd.level * RaceClicker.INSTANCE.serverData.addSpeed + 1;
                 }
-                p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.10000000149011612 * pd.speed);
+                p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.020000000149011612 * pd.speed);
             }
             if(!addedPlayersToBar.contains(p)) {
                 bar.addPlayer(p);

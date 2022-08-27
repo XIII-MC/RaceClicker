@@ -10,7 +10,7 @@ public class TempServerData {
     public boolean isWaitingAfterClickPhase;
     public boolean isRacePhase;
     public int timeLeft;
-    public double addSpeed = 0.01;
+    public double addSpeed = 0.02;
 
 
     public void changePhase() {

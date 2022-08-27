@@ -18,7 +18,7 @@ public class SetSpeedCommand implements CommandExecutor {
             Player p = (Player)sender;
             if(Data.data.isAlreadyRegistered(p) && p.hasPermission("raceclicker.setspeed")) {
                 PlayerData pd = Data.data.getUserData(p);
-                pd.level = (int) (Double.parseDouble(args[0]) / 0.01);
+                pd.level = (int) (Double.parseDouble(args[0]) / 0.02);
                 if(pd.level <= 0) {
                     pd.level = 1;
                     p.sendMessage("Set Speed to 1");

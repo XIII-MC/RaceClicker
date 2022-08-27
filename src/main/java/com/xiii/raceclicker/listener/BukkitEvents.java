@@ -26,10 +26,10 @@ public class BukkitEvents implements Listener {
         if(!exists) {
             Data.data.registerUser(p);
             PlayerData pd = Data.data.getUserData(p);
-            p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.10000000149011612 * pd.speed);
+            p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.010000000149011612 * pd.speed);
         } else {
             PlayerData pd = Data.data.getUserData(p);
-            p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.10000000149011612 * pd.speed);
+            p.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.010000000149011612 * pd.speed);
         }
         p.setGameMode(GameMode.ADVENTURE);
     }
